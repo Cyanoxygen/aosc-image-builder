@@ -1,0 +1,18 @@
+
+if ARCH_AMD64
+
+if AMD64_GENERIC
+
+choice 
+	prompt "Device selection"
+
+config AMD64_GENERIC_GENERIC
+	bool "Generic x86_64 PC"
+	default y if AMD64_GENERIC
+
+endchoice
+
+endif # AMD64_GENERIC
+
+endif # ARCH_AMD64
+

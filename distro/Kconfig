@@ -1,0 +1,58 @@
+
+comment "User Configuration"
+
+config CREATE_USER
+	bool "Create a default user"
+	default y
+
+if CREATE_USER
+
+config USERNAME
+	string "Default user name"
+	default aosc
+
+config PASSWORD
+	string "Password of the default user"
+	default anthon
+
+config USER_HAS_SSH_KEY
+	bool "Add SSH Key for the default user"
+	default n
+
+config USER_SSH_KEY
+	string "SSH Key for the default user" if USER_HAS_SSH_KEY
+
+endif # CREATE_USER
+
+if CREATE_USER != y
+
+config ROOT_HAS_PASSWORD
+	bool "Set password for root user"
+
+if ROOT_HAS_PASSWORD
+
+config ROOT_PASSWORD
+	string "Password of root user"
+
+endif # ROOT_HAS_PASSWORD
+
+if ROOT_HAS_PASSWORD != y
+
+config ROOT_SSHKEY
+	string "Authorized SSH Key for root user"
+
+endif # ROOT_HAS_PASSWORD != y
+
+endif # CREATE_USER != y
+
+comment "Miscellaneous Configuration"
+
+config HOSTNAME
+	string "Default hostname"
+	default "$(HOSTNAME)"
+
+config TIMEZONE
+	string "Default time zone"
+	default "Asia/Shanghai"
+
+

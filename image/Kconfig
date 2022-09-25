@@ -1,0 +1,64 @@
+
+# Image options
+
+config IMGSIZE_SMALL
+	bool
+	default n
+
+config IMGSIZE_LARGE
+	bool
+	default n
+
+choice IMAGE
+prompt "Image to generate"
+
+config IMAGE_VMDK
+	bool "Virtual Disk Image (vmdk)" if SUPPORTS_VMDK
+
+config IMAGE_RAW
+	bool "Flashable Raw Image" if SUPPORTS_RAWIMG
+
+endchoice
+
+config IMAGE_LIVEKIT
+	bool "Generate LiveKit ISO Image" if HAS_LIVEKIT
+	default n
+
+choice IMAGE_VARIANT
+prompt "OS Variant of the image"
+
+config IMAGE_BASE
+	bool "Base (Minimal set of packages for headless use)"
+	select IMGSIZE_SMALL
+
+config IMAGE_DESKTOP
+	bool "Desktop (Preinstalled with DE, applications, etc., "
+	select IMGSIZE_LARGE
+
+config IMAGE_SERVER
+	bool "Server (Preinstalled with various server packages w/o Desktop)"
+	select IMGSIZE_SMALL
+
+endchoice
+
+config WITH_NVIDIA
+	bool "Install proprietary Nvidia driver" if SUPPORTS_NVIDIA && IMAGE_DESKTOP
+	default n
+
+source "image/vmdk/Kconfig"
+
+source "image/raw/Kconfig"
+
+config CUSTOM_PACKAGES
+	bool "Preinstall packages while generating image"
+	default n
+
+if CUSTOM_PACKAGES
+
+comment "Warning, be careful to disk usage of the generated image"
+
+config PREINST_PACKAGE_LIST
+	string "List of packages seperated with commas" if CUSTOM_PACKAGES
+
+endif
+

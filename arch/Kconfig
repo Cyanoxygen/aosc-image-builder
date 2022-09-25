@@ -1,0 +1,39 @@
+
+choice
+prompt "Architecture Selection"
+
+comment "Target Architecture"
+
+config ARCH_AMD64
+	bool "x86-64 Architecture"
+	help
+		Create image for x86-64 architecture.
+
+config ARCH_ARM64
+	bool "ARM Aarch64 Architecture"
+	help
+		Create image for ARM64 architecture.
+
+config ARCH_RISCV64
+	bool "RISC-V Architecture"
+	help
+		Create image for RISC-V architecture.
+
+config ARCH_LOONGARCH64
+	bool "Loongson LoongArch Architecture"
+	help
+		Create image for LoongArch architecture.
+
+endchoice
+
+config ARCH
+	string
+	default "arm64" if ARCH_ARM64
+	default "amd64" if ARCH_AMD64
+	default "riscv64" if ARCH_RISCV64
+	default "loongarch64" if ARCH_LOONGARCH64
+
+source "arch/amd64/platform/Kconfig"
+
+source "arch/arm64/platform/Kconfig"
+

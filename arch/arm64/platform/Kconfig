@@ -1,0 +1,19 @@
+
+if ARCH_ARM64
+
+choice
+prompt "Platform Selection for ARM64"
+
+config ARM64_SUNXI64
+	bool "Devices with AllWinner SoC"
+
+config ARM64_RK64
+	bool "Devices with Rockchip SoC"
+
+config ARM64_RPI64
+	bool "Raspberry Pis with BCM2835 based SoC"
+
+endchoice
+
+endif
+

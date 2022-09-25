@@ -1,0 +1,13 @@
+
+if IMAGE_RAW
+
+config RAWIMG_SIZE
+	int "Raw Image Size"
+	default 6144 if IMGSIZE_SMALL
+	default 12800 if IMGSIZE_LARGE
+	range 6144 32768
+
+comment "Image partition table depends on which device is selected"
+
+endif
+

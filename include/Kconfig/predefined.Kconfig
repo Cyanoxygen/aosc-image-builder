@@ -1,0 +1,53 @@
+
+# The following are specific for subtarget (platform)
+
+# Supported image types
+
+# This platform supports squashfs
+# Should this present here? This is a way to distribute distro tarballs, not
+# ready to use images.
+config SUPPORTS_SQUASHFS
+	bool
+	default n
+
+# Set to y if this platform can support virtual disks.
+# This should set to y only if such platform is generic.
+config SUPPORTS_VMDK
+	bool
+	default n
+
+# Set to y if generated raw images are intended for such platform, e.g.
+# various ARM boards.
+config SUPPORTS_RAWIMG
+	bool
+	default n
+
+config SUPPORTS_NVIDIA
+	bool
+	default n
+
+# Set to y if one platform have LiveKit available, again, this should set to y
+# only if such platform is generic.
+config HAS_LIVEKIT
+	bool
+	default n
+
+# Set to y if one platform can run base variant of AOSC OS.
+config VARIANT_BASE
+	bool
+	default n
+
+# Set to y if one platform can run desktop variant of AOSC OS.
+# Note that not all platforms can run desktop variant.
+config VARIANT_DESKTOP
+	bool
+	default n
+
+# Set to y if one platform can run server variant of AOSC OS.
+config VARIANT_SERVER
+	bool
+	default n
+
+# End platform specific configs
+# vim:syntax=kconfig:ts=8:
+

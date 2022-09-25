@@ -1,0 +1,25 @@
+
+# Platform selection for AMD64
+
+if ARCH_AMD64
+
+choice
+prompt "Platform Selection for AMD64"
+
+config AMD64_GENERIC
+
+	bool "Generic x86-64"
+	select SUPPORTS_VMDK
+	select SUPPORTS_RAWIMG
+	select SUPPORTS_NVIDIA
+	select HAS_LIVEKIT
+	select VARIANT_BASE
+	select VARIANT_DESKTOP
+	select VARIANT_SERVER
+
+endchoice
+
+endif # ARCH_AMD64
+
+source "device/amd64-generic/Kconfig"
+

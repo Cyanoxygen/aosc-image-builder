@@ -1,0 +1,21 @@
+
+if IMAGE_VMDK
+
+config VMDK_SIZE
+	int "Virtual Disk Size (MiB)"
+	default 65536 if IMGSIZE_SMALL
+	default 65536 if IMGSIZE_LARGE
+	range 16384 4294967296
+
+choice
+prompt "Partition Map"
+
+config VMDK_MBR
+	bool "Master Boot Record (MBR)"
+
+config VMDK_GPT
+	bool "GUID Partition Table (GPT)"
+
+endchoice
+
+endif

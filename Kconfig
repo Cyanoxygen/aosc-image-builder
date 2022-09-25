@@ -1,0 +1,24 @@
+# AOSC OS Image Builder Config menu
+
+mainmenu "AOSC OS Image Builder"
+
+comment "General Platform configuration"
+
+# Predefined config variables
+source "include/Kconfig/predefined.Kconfig"
+
+# Architecture configuration
+source "arch/Kconfig"
+
+# source "platform/Kconfig"
+# source "device/Kconfig"
+
+comment "Image Configuration"
+
+source "image/Kconfig"
+#
+
+comment "Distro Configuration"
+
+source "distro/Kconfig"
+
