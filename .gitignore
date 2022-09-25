@@ -1,0 +1,8 @@
+.config*
+include/config
+include/generated
+scripts/kconfig/*
+!scripts/kconfig/*.c
+!scripts/kconfig/*.h
+!scripts/kconfig/*.sh
+!scripts/kconfig/Makefile
